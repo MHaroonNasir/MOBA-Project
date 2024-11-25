@@ -37,7 +37,9 @@ public class AutoAttackScript : CombatSystem
     public void CheckEnemyInAutoAttackRange() {
         playerMove.agent.stoppingDistance = stats.ID.attackRange;
         float distanceToTarget = Vector3.Distance(enemyInteraction.targetEnemy.transform.position, transform.position);
-        if (distanceToTarget <= stats.ID.attackRange * 1.1) {
+        //Debug.Log(distanceToTarget);
+        if (distanceToTarget <= stats.ID.attackRange * 1.015) { //added micro length to auto as stopping distance in EnemyInteraction can be slightly above the value mentioned
+            //Debug.Log("started auto");
             StartAutoAttackAnimation();
         }
     }
@@ -65,7 +67,11 @@ public class AutoAttackScript : CombatSystem
     }
 
     void StartAutoAttackAnimation() {
-        animator.SetBool("Attacking", true);
+        float distanceToTarget = Vector3.Distance(enemyInteraction.targetEnemy.transform.position, transform.position);
+        if (distanceToTarget <= stats.ID.attackRange * 1.1) {
+            //Debug.Log("auto in range");
+            animator.SetBool("Attacking", true);
+        }
     }
 
     public void EndAutoAttackAnimation() {

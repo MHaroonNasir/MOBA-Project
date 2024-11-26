@@ -63,7 +63,7 @@ public class SamuraiAbility1 : CombatSystem
         while (remainingAnimationTime > 0) {
             remainingAnimationTime -= Time.deltaTime * 1000;
             //Debug.Log(remainingAnimationTime);
-            if (this.enemyInteraction.targetEnemy != null) {
+            if (this.enemyInteraction.targetEnemy != null || playerMove.agent.hasPath != false) {
                 animator.SetTrigger("test trigger");
                 StopCoroutine(CancelAbilityRecoveryAnimation());
                 Debug.Log("=ability1 cacelled reecoery");

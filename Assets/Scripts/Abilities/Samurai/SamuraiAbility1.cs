@@ -6,6 +6,7 @@ public class SamuraiAbility1 : CombatSystem
 {
     [SerializeField] GameObject ability1Hitbox; //research difference between serializefield and public
     public SpawnAfterDelay spawnAfterDelay;
+    public HitboxTest hitboxTest; //script needs renaming
     Animator animator;
     //PlayerMove playerMove;
 
@@ -53,7 +54,7 @@ public class SamuraiAbility1 : CombatSystem
         stats.ID.returnEnemyTargetting?.Invoke();
         spawnAfterDelay.BeginSpawnDelay(this.transform.position + (transform.forward * forwardDistance), this.gameObject.transform.rotation.eulerAngles);
         //animator.ResetTrigger("Ability1");
-        Debug.Log("finishi ability1");
+        //Debug.Log("finishi ability1");
         //animator.SetTrigger("test trigger");
     }
 
@@ -66,21 +67,22 @@ public class SamuraiAbility1 : CombatSystem
             if (this.enemyInteraction.targetEnemy != null || playerMove.agent.hasPath != false) {
                 animator.SetTrigger("test trigger");
                 StopCoroutine(CancelAbilityRecoveryAnimation());
-                Debug.Log("=ability1 cacelled reecoery");
+                //Debug.Log("=ability1 cacelled reecoery");
             } else {
                 yield return null;
             }
         }
         animator.SetTrigger("test trigger");
-        Debug.Log("ability1 fully ended");
+        //Debug.Log("ability1 fully ended");
+        Debug.Log("ability 1 stack: " + ability1Stack);
     }
 
-    void IncreaseAbilityStacks(int stack) {
-        ability1Stack = ability1Stack + stack > 2 ? 2 : ability1Stack + stack;
+    void IncreaseAbilityStacks() {
+        ability1Stack = ability1Stack + 1 > 2 ? 2 : ability1Stack + 1;
     }
 
-    void DecreaseAbilityStacks(int stack) {
-        ability1Stack = ability1Stack - stack < 0 ? 0 : ability1Stack - stack;
+    void DecreaseAbilityStacks() {
+        ability1Stack = ability1Stack - 1 < 0 ? 0 : ability1Stack - 1;
     }
 
     void CastAbility1() {
@@ -92,9 +94,13 @@ public class SamuraiAbility1 : CombatSystem
 
     private void OnEnable() {
         stats.ID.ability1 += CastAbility1;
+        hitboxTest.SwordHitEnemy += IncreaseAbilityStacks;
+        hitboxTest.SwordNotHitEnemy += DecreaseAbilityStacks;
     }
 
     private void OnDisable() {
         stats.ID.ability1 -= CastAbility1;
+        hitboxTest.SwordHitEnemy -= IncreaseAbilityStacks;
+        hitboxTest.SwordNotHitEnemy -= DecreaseAbilityStacks;
     }
 }

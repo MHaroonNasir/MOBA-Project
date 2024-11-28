@@ -5,8 +5,8 @@ using UnityEngine;
 public class SamuraiAbility1 : CombatSystem
 {
     [SerializeField] GameObject ability1Hitbox; //research difference between serializefield and public
-    public SpawnAfterDelay spawnAfterDelay;
-    public HitboxTest hitboxTest; //script needs renaming
+    public SpawnAfterDelay spawnAfterDelay; //script for spawning aftershock hitbox, attached to gameobject that is parent of sword hitbox (needs re-structuring)
+    public HitboxTest hitboxTest; //script needs renaming, script for invoking abilty stack from the sword hitbox itself
     Animator animator;
     //PlayerMove playerMove;
 
@@ -52,7 +52,7 @@ public class SamuraiAbility1 : CombatSystem
         }
         this.playerMove.EnableMovement(); //from combat system parent class, this keyword not needed
         stats.ID.returnEnemyTargetting?.Invoke();
-        spawnAfterDelay.BeginSpawnDelay(this.transform.position + (transform.forward * forwardDistance), this.gameObject.transform.rotation.eulerAngles);
+        spawnAfterDelay.BeginSpawnDelay(this.transform.position + (transform.forward * forwardDistance), this.gameObject.transform.rotation.eulerAngles, ability1Stack);
         //animator.ResetTrigger("Ability1");
         //Debug.Log("finishi ability1");
         //animator.SetTrigger("test trigger");

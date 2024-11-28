@@ -71,6 +71,7 @@
     <Compile Include="Assets\DisableOutlineOnStart.cs" />
     <Compile Include="Assets\BillboardCanvas.cs" />
     <Compile Include="Assets\Ability5.cs" />
+    <Compile Include="Assets\Scripts\Abilities\Samurai\SamuraiAftershockSpawn.cs" />
     <Compile Include="Assets\Ability1.cs" />
     <Compile Include="Assets\HealthUI.cs" />
     <Compile Include="Assets\Scripts\Enemy Handling\EnemyInteraction.cs" />

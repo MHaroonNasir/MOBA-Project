@@ -792,7 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c53c55a50ccb24fb357e8e39a47c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aftershockHitbox: {fileID: 1045004668}
+  aftershockHitbox: {fileID: 1186272216}
 --- !u!1 &139626677
 GameObject:
   m_ObjectHideFlags: 0

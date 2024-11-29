@@ -21,8 +21,7 @@ public class HitboxTest : MonoBehaviour
         if (other.gameObject.tag == "Enemy") {
             enemyDamageCalculation = other.gameObject.GetComponent<DamageCalculation>();
             enemyDamageCalculation.ReceiveDamage(15f);
-            SwordHitEnemy?.Invoke();
-            hasSwordHitEnemy = true; //crude way of ensuring if sword has hit, the OnDisable code logic does not run
+            hasSwordHitEnemy = true;
         }
     }
 
@@ -33,7 +32,9 @@ public class HitboxTest : MonoBehaviour
 
     private void OnDisable() {
         //Debug.Log("hitbox disabled");
-        if (hasSwordHitEnemy == false) {
+        if (hasSwordHitEnemy == true) {
+            SwordHitEnemy?.Invoke();
+        } else {
             SwordNotHitEnemy?.Invoke();
         }
     }

@@ -90,6 +90,7 @@
     <Compile Include="Assets\RespawnHandler.cs" />
     <Compile Include="Assets\Stats.cs" />
     <Compile Include="Assets\CombatSystem.cs" />
+    <Compile Include="Assets\Prefabs\HealthBar\HealthBar.cs" />
     <Compile Include="Assets\Ability4.cs" />
     <Compile Include="Assets\PlayerMove.cs" />
     <Compile Include="Assets\PlayerEvents.cs" />

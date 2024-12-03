@@ -383,6 +383,7 @@
 "Assets/PlayerMove.cs"
 "Assets/Polytope Studio/Lowpoly_Characters/Sources/Scripts/PT_Create_Prefab.cs"
 "Assets/Prefabs/HealthBar/HealthBar.cs"
+"Assets/Prefabs/HealthBar/HealthBarIndicatorManager.cs"
 "Assets/QuickOutline/Scripts/Outline.cs"
 "Assets/RespawnHandler.cs"
 "Assets/Scripts/Abilities/Samurai/SamuraiAbility1.cs"

@@ -151,7 +151,8 @@ MonoBehaviour:
   currentHealth: 500
   maxHealth: 1000
   incrementHealth: 100
-  healthBarSlider: {fileID: 0}
+  healthBarSlider: {fileID: 5629080227384094548}
+  healthBarIndicatorManager: {fileID: 7568331088795037717}
   indicators: []
   indicatorImages: []
 --- !u!1 &3174395021897666233
@@ -399,7 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.66663665, g: 1, b: 0.5235849, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

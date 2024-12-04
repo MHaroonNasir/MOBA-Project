@@ -346,7 +346,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 17
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 5.7974997, y: 0.97000194, z: 3.71}
     speed: 2
-    m_Value: {x: 5.7974997, y: 0.97000194, z: 3.71}
+    m_Value: {x: 31.389488, y: 0.96496046, z: -40.899956}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -745,11 +745,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.24633074, y: -0.029913867, z: 0.0077317148, w: 0.9687643}
     speed: 2
-    m_Value: {x: 0.2463138, y: -0.029911809, z: 0.007731183, w: 0.96869767}
+    m_Value: {x: -0.0015004564, y: -0.0038995233, z: 0.0001297266, w: 0.9999913}
   m_Size:
     m_Target: 2.8060079
     speed: 2
-    m_Value: 2.8060079
+    m_Value: 1.810473
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1340,7 +1340,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 25034
+  m_LastSelectedObjectID: 28040
 --- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52

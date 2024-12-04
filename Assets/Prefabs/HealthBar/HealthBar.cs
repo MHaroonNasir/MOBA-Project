@@ -8,6 +8,7 @@ public class HealthBar : MonoBehaviour
 {
     public float currentHealth, maxHealth, incrementHealth;
     public Slider healthBarSlider;
+    public HealthBarIndicatorManager healthBarIndicatorManager;
 
     public List<GameObject> indicators; //these 2 lists should be same size
     public List<Image> indicatorImages;
@@ -16,6 +17,7 @@ public class HealthBar : MonoBehaviour
     {
         UpdateHealthBarSlider();
         UpdateIndicators();
+        healthBarIndicatorManager.IncrementHealthBar(maxHealth);
     }
 
     public void UpdateCurrentHealth(float currentHealth) {

@@ -382,6 +382,7 @@
 "Assets/PlayerID.cs"
 "Assets/PlayerMove.cs"
 "Assets/Polytope Studio/Lowpoly_Characters/Sources/Scripts/PT_Create_Prefab.cs"
+"Assets/Prefabs/HealthBar/FadingHealthBar.cs"
 "Assets/Prefabs/HealthBar/HealthBar.cs"
 "Assets/Prefabs/HealthBar/HealthBarIndicatorManager.cs"
 "Assets/QuickOutline/Scripts/Outline.cs"

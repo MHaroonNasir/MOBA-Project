@@ -89,6 +89,7 @@
     <Compile Include="Assets\HitboxTest.cs" />
     <Compile Include="Assets\DamageCalculation.cs" />
     <Compile Include="Assets\RespawnHandler.cs" />
+    <Compile Include="Assets\Prefabs\HealthBar\FadingHealthBar.cs" />
     <Compile Include="Assets\Stats.cs" />
     <Compile Include="Assets\CombatSystem.cs" />
     <Compile Include="Assets\Prefabs\HealthBar\HealthBar.cs" />

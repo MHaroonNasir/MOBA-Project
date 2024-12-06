@@ -16,13 +16,29 @@ public class FadingHealthBar : MonoBehaviour
 
     void Start()
     {
-        UpdateHealthBarSlider();
+        SetHealthBarSliderValues();
         UpdateIndicators();
         healthBarIndicatorManager.IncrementHealthBar(maxHealth);
     }
 
     private void Update() {
-        
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            StartCoroutine(UpdateHealthBarSlider(100));
+            Debug.Log("increase");
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            StartCoroutine(UpdateHealthBarSlider(-100));
+            Debug.Log("decrease");
+        }
+    }
+
+    public void SetHealthBarSliderValues() {
+        currentHealthBarSlider.maxValue = maxHealth;
+        currentHealthBarSlider.value = currentHealth;
+        fadingHealthBarSlider.maxValue = maxHealth;
+        fadingHealthBarSlider.value = currentHealth;
     }
 
     public void UpdateCurrentHealth(float currentHealth) {
@@ -33,9 +49,12 @@ public class FadingHealthBar : MonoBehaviour
         this.maxHealth = Mathf.Min(maxHealth, 3000f);
     }
 
-    private void UpdateHealthBarSlider() {
-        currentHealthBarSlider.maxValue = maxHealth;
-        currentHealthBarSlider.value = currentHealth;
+    private IEnumerator UpdateHealthBarSlider(float value) {
+        for (int i = 0; i < 100; i++) {
+            currentHealthBarSlider.value += value;
+            fadingHealthBarSlider.value += value / 500f;
+            yield return new WaitForSeconds(0.003f);
+        }
     }
 
     private void UpdateIndicators() {

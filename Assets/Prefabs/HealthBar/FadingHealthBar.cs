@@ -17,22 +17,19 @@ public class FadingHealthBar : MonoBehaviour
     void Start()
     {
         SetHealthBarSliderValues();
-        UpdateIndicators();
         healthBarIndicatorManager.IncrementHealthBar(maxHealth);
     }
 
-    private void Update() {
+    /*private void Update() {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            StartCoroutine(UpdateHealthBarSlider(100));
-            Debug.Log("increase");
+            IncreaseHealth(100);
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            StartCoroutine(UpdateHealthBarSlider(-100));
-            Debug.Log("decrease");
+            StartCoroutine(DecreaseHealth(100));
         }
-    }
+    }*/
 
     public void SetHealthBarSliderValues() {
         currentHealthBarSlider.maxValue = maxHealth;
@@ -49,29 +46,17 @@ public class FadingHealthBar : MonoBehaviour
         this.maxHealth = Mathf.Min(maxHealth, 3000f);
     }
 
-    private IEnumerator UpdateHealthBarSlider(float value) {
-        for (int i = 0; i < 100; i++) {
-            currentHealthBarSlider.value += value;
-            fadingHealthBarSlider.value += value / 500f;
-            yield return new WaitForSeconds(0.003f);
-        }
+    private void IncreaseHealth(float value) {
+        currentHealthBarSlider.value += value;
+        fadingHealthBarSlider.value += value;
     }
 
-    private void UpdateIndicators() {
-        //casting to int
-        int numOfIndicators = (int)Mathf.Floor(maxHealth / currentHealth); //mathf.floor to ensure 799 / 100 leads to 7 indicator images, not rounded up 8
+    private IEnumerator DecreaseHealth(float value) {
+        currentHealthBarSlider.value -= value;
 
-        for (int i = 0; i < indicators.Count; i++) {
-            if (i < numOfIndicators) {
-                indicators[i].SetActive(true);
-                if (i == numOfIndicators - 1) {
-                    indicatorImages[i].enabled = false;
-                } else {
-                    indicatorImages[i].enabled = true;
-                }
-            } else {
-                indicators[i].SetActive(false);
-            }
+        for (int i = 0; i < 100; i++) {
+            fadingHealthBarSlider.value -= value / 100f;
+            yield return new WaitForSeconds(0.003f);
         }
     }
 }

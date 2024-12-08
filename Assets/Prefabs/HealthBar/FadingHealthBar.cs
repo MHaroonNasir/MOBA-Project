@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class FadingHealthBar : MonoBehaviour
 {
-    public float currentHealth, maxHealth, incrementHealth;
+    public float currentHealth, maxHealth;
     public Slider currentHealthBarSlider;
     public Slider fadingHealthBarSlider;
     public HealthBarIndicatorManager healthBarIndicatorManager;

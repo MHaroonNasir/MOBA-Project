@@ -389,6 +389,7 @@
 "Assets/RespawnHandler.cs"
 "Assets/Scripts/Abilities/Samurai/SamuraiAbility1.cs"
 "Assets/Scripts/Abilities/Samurai/SamuraiAftershockSpawn.cs"
+"Assets/Scripts/Crowd Control/CCSlow.cs"
 "Assets/Scripts/Enemy Handling/EnemyInteraction.cs"
 "Assets/Scripts/Input Handling/AbilityBasic.cs"
 "Assets/Scripts/SpawnAfterDelay.cs"

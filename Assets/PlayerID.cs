@@ -8,7 +8,8 @@ using UnityEngine.AI;
 public class PlayerID : ScriptableObject
 {
     public string playerName;
-    public float movementSpeed = 3.5f;
+    public float baseMovementSpeed = 3.5f;
+    public float appliedMovementSpeed = 3.5f;
     public float attackSpeed = 1f;
     public float attackRange = 3f;
 

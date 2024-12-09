@@ -69,6 +69,7 @@
     <Compile Include="Assets\Ability3.cs" />
     <Compile Include="Assets\Ability2.cs" />
     <Compile Include="Assets\DisableOutlineOnStart.cs" />
+    <Compile Include="Assets\Scripts\Crowd Control\CCSlow.cs" />
     <Compile Include="Assets\BillboardCanvas.cs" />
     <Compile Include="Assets\Ability5.cs" />
     <Compile Include="Assets\Scripts\Abilities\Samurai\SamuraiAftershockSpawn.cs" />

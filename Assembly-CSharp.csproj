@@ -95,6 +95,7 @@
     <Compile Include="Assets\CombatSystem.cs" />
     <Compile Include="Assets\Prefabs\HealthBar\HealthBar.cs" />
     <Compile Include="Assets\Ability4.cs" />
+    <Compile Include="Assets\Scripts\Crowd Control\SlowHitbox.cs" />
     <Compile Include="Assets\PlayerMove.cs" />
     <Compile Include="Assets\PlayerEvents.cs" />
   </ItemGroup>

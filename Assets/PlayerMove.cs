@@ -40,7 +40,7 @@ public class PlayerMove : CombatSystem
         //highlightManager = GetComponent<HighlightManager>();
         //agent.destination = goal.position;
         mouseRightClick.Enable();
-        agent.speed = stats.ID.appliedMovementSpeed;
+        //agent.speed = stats.ID.appliedMovementSpeed;
     }
 
     void Update()

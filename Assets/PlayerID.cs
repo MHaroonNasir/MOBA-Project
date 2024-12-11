@@ -10,7 +10,8 @@ public class PlayerID : ScriptableObject
     public string playerName;
     public float baseMovementSpeed = 3.5f;
     public float appliedMovementSpeed = 3.5f;
-    public float attackSpeed = 1f;
+    public float baseAttackSpeed = 1f;
+    public float appliedAttackSpeed = 1f;
     public float attackRange = 3f;
 
     public float health = 100f;

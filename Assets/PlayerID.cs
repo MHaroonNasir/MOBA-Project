@@ -7,7 +7,7 @@ using UnityEngine.AI;
 [CreateAssetMenu]
 public class PlayerID : ScriptableObject
 {
-    public string playerName;
+    public string playerName = "samurai";
     public float baseMovementSpeed = 3.5f;
     public float appliedMovementSpeed = 3.5f;
     public float baseAttackSpeed = 1f;

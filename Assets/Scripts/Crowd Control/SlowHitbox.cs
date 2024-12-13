@@ -6,13 +6,16 @@ public class SlowHitbox : MonoBehaviour
 {
     Dictionary<string, CCSlow> chrIDs = new Dictionary<string, CCSlow>();
 
-    private void OnTriggerEnter(Collision other) {
-        other.gameObject.TryGetComponent<PlayerID>(out PlayerID playerID);
-        other.gameObject.TryGetComponent<CCSlow>(out CCSlow ccSlow);
-        //int numberIDInChrSlows = chrSlows.Count;
-        chrIDs.Add(playerID.playerName, ccSlow);
-        //chrSlows.Add(ccSlow);
-        StartCoroutine(ApplyContinuousSlow(playerID.playerName));
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("Player")) {
+            Debug.Log("ontriggerenter");
+            other.gameObject.TryGetComponent<Stats>(out Stats stats);
+            other.gameObject.TryGetComponent<CCSlow>(out CCSlow ccSlow);
+            //int numberIDInChrSlows = chrSlows.Count;
+            chrIDs.Add(stats.ID.playerName, ccSlow);
+            //chrSlows.Add(ccSlow);
+            StartCoroutine(ApplyContinuousSlow(stats.ID.playerName));
+        }
     }
 
     IEnumerator ApplyContinuousSlow(string playerName) {
@@ -23,8 +26,8 @@ public class SlowHitbox : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other) {
-        other.gameObject.TryGetComponent<PlayerID>(out PlayerID playerID);
-        chrIDs.Remove(playerID.playerName);
+        other.gameObject.TryGetComponent<Stats>(out Stats stats);
+        chrIDs.Remove(stats.ID.playerName);
     }
 
     private void OnDisable() {

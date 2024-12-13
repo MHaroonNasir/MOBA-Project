@@ -2381,6 +2381,18 @@ MonoBehaviour:
   hitboxTest: {fileID: 1571838994}
   forwardDistance: 3
   fullAnimationTime: 2000
+--- !u!114 &602136370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602136351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff337df73a0af1f4a91e914e7b057877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &605053154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2964,7 +2976,9 @@ GameObject:
   - component: {fileID: 754124902}
   - component: {fileID: 754124901}
   - component: {fileID: 754124900}
-  m_Layer: 0
+  - component: {fileID: 754124903}
+  - component: {fileID: 754124904}
+  m_Layer: 2
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3001,7 +3015,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3057,6 +3071,45 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754124898}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &754124903
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754124898}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
+--- !u!114 &754124904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754124898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8b437f7c3d912498a728ade4733ebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &768422413
 GameObject:
   m_ObjectHideFlags: 0
@@ -6110,6 +6163,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eab960b7e307bec49a291ca960746634, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1175578284034163935, guid: eab960b7e307bec49a291ca960746634, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 1.2784777
@@ -6469,6 +6526,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eab960b7e307bec49a291ca960746634, type: 3}
       insertIndex: -1
       addedObject: {fileID: 602136352}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eab960b7e307bec49a291ca960746634, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 602136370}
   m_SourcePrefab: {fileID: 100100000, guid: eab960b7e307bec49a291ca960746634, type: 3}
 --- !u!4 &1221715980 stripped
 Transform:
@@ -13081,7 +13141,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1756383623}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Slow Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}

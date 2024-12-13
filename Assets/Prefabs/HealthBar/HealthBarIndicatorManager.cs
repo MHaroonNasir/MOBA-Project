@@ -34,10 +34,10 @@ public class HealthBarIndicatorManager : MonoBehaviour
             indicatorImages.Add(childObject.GetComponent<Image>());
         }
 
-        Debug.Log(currentIndicatorChildren);
-        Debug.Log(widthPerIncrement);
-        Debug.Log(numOfIndicators);
-        Debug.Log(widthIncreaseForLastIncrement);
+        //Debug.Log(currentIndicatorChildren);
+        //Debug.Log(widthPerIncrement);
+        //Debug.Log(numOfIndicators);
+        //Debug.Log(widthIncreaseForLastIncrement);
 
         UpdateIndicators();
         UpdateIndicatorCanvas(widthIncreaseForLastIncrement);

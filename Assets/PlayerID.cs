@@ -28,6 +28,10 @@ public class PlayerID : ScriptableObject
     public Action resetEnemyTargeting;
     public Action<float, string> dealDamage;
 
+    //CC scripts
+    public Action isSlowed;
+    public Action ccEnded;
+
     //components
     //public PlayerMove playerMove;
 }

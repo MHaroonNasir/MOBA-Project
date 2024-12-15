@@ -151,6 +151,10 @@ public class PlayerMove : CombatSystem
         anim.SetFloat("Speed", speed, motionSmoothTime, Time.deltaTime);
     }
 
+    public void UpdateMovementSpeed() {
+        agent.speed = stats.ID.appliedMovementSpeed;
+    }
+
     /*public void AttackAnimation(bool attackState)
     {
         anim.SetBool("Attacking", attackState);
@@ -172,6 +176,16 @@ public class PlayerMove : CombatSystem
 
     public void DisableMovement() {
         mouseRightClick.Disable();
+    }
+
+    private void OnEnable() {
+        stats.ID.isSlowed += UpdateMovementSpeed;
+        stats.ID.ccEnded += UpdateMovementSpeed;
+    }
+
+    private void OnDisable() {
+        stats.ID.isSlowed -= UpdateMovementSpeed;
+        stats.ID.ccEnded -= UpdateMovementSpeed;
     }
 }
 

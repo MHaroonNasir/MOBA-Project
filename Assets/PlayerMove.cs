@@ -153,6 +153,7 @@ public class PlayerMove : CombatSystem
 
     public void UpdateMovementSpeed() {
         agent.speed = stats.ID.appliedMovementSpeed;
+        Debug.Log("updated mvoement speed: " + stats.ID.appliedMovementSpeed);
     }
 
     /*public void AttackAnimation(bool attackState)

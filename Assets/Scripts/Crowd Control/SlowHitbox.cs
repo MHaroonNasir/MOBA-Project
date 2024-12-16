@@ -11,7 +11,6 @@ public class SlowHitbox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
-            Debug.Log("ontriggerenter");
             other.gameObject.TryGetComponent<Stats>(out Stats stats);
             other.gameObject.TryGetComponent<CCSlow>(out CCSlow ccSlow);
             //chrIDs.Add(stats.ID.playerName, ccSlow);
@@ -33,9 +32,9 @@ public class SlowHitbox : MonoBehaviour
         while (chrNames.Contains(playerName) == true) {
             int index = chrNames.IndexOf(playerName);
             //chrStats[index].ID.isSlowed?.Invoke();
-            chrSlows[index].ReceiveCCSlow(0.2f, '%', 0.65f);
-            
-            yield return new WaitForSeconds(0.2f);
+            chrSlows[index].ReceiveCCSlow(0.16f, '%', 0.65f);
+            Debug.Log("recieve cc slow");
+            yield return new WaitForSeconds(0.15f);
         }
 
     }
@@ -47,6 +46,7 @@ public class SlowHitbox : MonoBehaviour
         chrNames.RemoveAt(index);
         chrStats.RemoveAt(index);
         chrSlows.RemoveAt(index);
+        Debug.Log("removed from cc slow");
     }
 
     private void OnDisable() {

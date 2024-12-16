@@ -20,12 +20,14 @@ public class CCSlow : CombatSystem
 
         while (timePassed < duration && slowType != 'f') {
             stats.ID.appliedMovementSpeed = stats.ID.baseMovementSpeed * (1 - intensity);
+            Debug.Log("while loop: " + stats.ID.appliedMovementSpeed);
             timePassed += Time.deltaTime;
             stats.ID.isSlowed?.Invoke();
             yield return null;
         }
 
         stats.ID.appliedMovementSpeed = stats.ID.baseMovementSpeed;
+        Debug.Log("out of while loop: " + stats.ID.appliedMovementSpeed);
         stats.ID.isSlowed?.Invoke();
     }
 }

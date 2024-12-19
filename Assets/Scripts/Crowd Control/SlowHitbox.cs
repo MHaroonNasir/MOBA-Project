@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class SlowHitbox : MonoBehaviour
 {
+    public bool isPersistentSlow;
+    [Tooltip("Value must be either 'f' or '%'")]
+    public char slowType;
+    [Tooltip("Value in seconds")]
+    public float duration;
+    [Tooltip("Value must be below 1.")]
+    public float slowIntensity;
+
     Dictionary<string, CCSlow> chrIDs = new Dictionary<string, CCSlow>();
     //List<string> chrNames = new List<string>();
     //List<CCSlow> chrSlows = new List<CCSlow>();
@@ -23,22 +31,11 @@ public class SlowHitbox : MonoBehaviour
     }
 
     void ApplySlowToEnemy(string playerName) {
-        chrIDs[playerName].ReceiveCCSlow('%', 0.5f);
-    }
-
-    IEnumerator ApplyContinuousSlow(string playerName) {
-        while (chrIDs.ContainsKey(playerName) == true) {
-            chrIDs[playerName].ReceiveCCSlow(0.16f, '%', 0.65f);
-            
-            yield return new WaitForSeconds(0.15f);
+        if (isPersistentSlow) {
+            chrIDs[playerName].ReceiveCCSlow(slowType, slowIntensity);
+        } else {
+            chrIDs[playerName].ReceiveCCSlow(duration, slowType, slowIntensity);
         }
-        /*while (chrNames.Contains(playerName) == true) {
-            int index = chrNames.IndexOf(playerName);
-            chrSlows[index].ReceiveCCSlow(0.16f, '%', 0.65f);
-            Debug.Log("recieve cc slow");
-            yield return new WaitForSeconds(0.15f);
-        }*/
-
     }
 
     private void OnTriggerExit(Collider other) {

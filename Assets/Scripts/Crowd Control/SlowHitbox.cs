@@ -4,29 +4,28 @@ using UnityEngine;
 
 public class SlowHitbox : MonoBehaviour
 {
+    [Tooltip("True = slow lasts indefinately until the zone dissapears or the player leaves it. False = slow lasts for a set duration.")]
     public bool isPersistentSlow;
-    [Tooltip("Value must be either 'f' or '%'")]
+    [Tooltip("Value must be either 'f' for a flat speed decrease or '%' for % speed decrease.")]
     public char slowType;
-    [Tooltip("Value in seconds")]
+    [Tooltip("Value in seconds. This value is ignored if isPersistentSlow enabled.")]
     public float duration;
-    [Tooltip("Value must be below 1.")]
+    [Tooltip("If slowType is 'f', value can be any digit. If slowType is '%', value must be below 1.")]
     public float slowIntensity;
 
     Dictionary<string, CCSlow> chrIDs = new Dictionary<string, CCSlow>();
-    //List<string> chrNames = new List<string>();
-    //List<CCSlow> chrSlows = new List<CCSlow>();
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
             other.gameObject.TryGetComponent<Stats>(out Stats stats);
             other.gameObject.TryGetComponent<CCSlow>(out CCSlow ccSlow);
-            chrIDs.Add(stats.ID.playerName, ccSlow);
-            ApplySlowToEnemy(stats.ID.playerName);
-            /*if (chrNames.Contains(stats.ID.playerName) == false) {
-                chrNames.Add(stats.ID.playerName);
-                chrSlows.Add(ccSlow);
-            }*/
-            //StartCoroutine(ApplyContinuousSlow(stats.ID.playerName));
+            if (!chrIDs.ContainsKey(stats.ID.playerName)) {
+                chrIDs.Add(stats.ID.playerName, ccSlow);
+                ApplySlowToEnemy(stats.ID.playerName);
+                if (!isPersistentSlow) {
+                    chrIDs.Remove(stats.ID.playerName);
+                }
+            }
         }
     }
 
@@ -39,21 +38,19 @@ public class SlowHitbox : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other) {
-        other.gameObject.TryGetComponent<Stats>(out Stats stats);
-        chrIDs[stats.ID.playerName].ReceiveCCSlow('%', 0f);
-        chrIDs.Remove(stats.ID.playerName);
-        //int index = chrNames.IndexOf(stats.ID.playerName);
-        //chrNames.RemoveAt(index);
-        //chrSlows.RemoveAt(index);
-        //Debug.Log("removed from cc slow");
+        if (isPersistentSlow) {
+            other.gameObject.TryGetComponent<Stats>(out Stats stats);
+            chrIDs[stats.ID.playerName].ReceiveCCSlow(slowType, 0f);
+            chrIDs.Remove(stats.ID.playerName);
+        }
     }
 
     private void OnDisable() {
-        foreach (KeyValuePair<string, CCSlow> entry in chrIDs) {
-            entry.Value.ReceiveCCSlow('%', 0f);
+        if (isPersistentSlow) {
+            foreach (KeyValuePair<string, CCSlow> entry in chrIDs) {
+                entry.Value.ReceiveCCSlow(slowType, 0f);
+            }
+            chrIDs.Clear();
         }
-        chrIDs.Clear();
-        //chrNames.Clear();
-        //chrSlows.Clear();
     }
 }

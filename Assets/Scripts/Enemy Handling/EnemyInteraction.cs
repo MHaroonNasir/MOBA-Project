@@ -60,7 +60,7 @@ public class EnemyInteraction : CombatSystem
     {
         //targetEnemy = enemy;
         agent.SetDestination(targetEnemy.transform.position); //look up difference between setdestination and destination
-        agent.stoppingDistance = stats.ID.attackRange;
+        agent.stoppingDistance = stats.ID.appliedAttackRange;
         /*float distanceToTarget = Vector3.Distance(targetEnemy.transform.position, transform.position);
         if (distanceToTarget <= stats.ID.attackRange * 1.1) {
             AttackAnimation(true);

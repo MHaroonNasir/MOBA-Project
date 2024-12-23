@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Abilities\Samurai\SamuraiAbility1.cs" />
     <Compile Include="Assets\Scripts\Abilities\Samurai\SamuraiAbility2.cs" />
     <Compile Include="Assets\Scripts\Abilities\Samurai\SamuraiAbility3.cs" />
+    <Compile Include="Assets\Scripts\Player Info\PlayerID.cs" />
     <Compile Include="Assets\AbilityCast.cs" />
     <Compile Include="Assets\Ability3.cs" />
     <Compile Include="Assets\Ability2.cs" />
@@ -77,15 +78,17 @@
     <Compile Include="Assets\Ability5.cs" />
     <Compile Include="Assets\Scripts\Abilities\Samurai\SamuraiAftershockSpawn.cs" />
     <Compile Include="Assets\Ability1.cs" />
+    <Compile Include="Assets\Scripts\Stats.cs" />
     <Compile Include="Assets\Prefabs\HealthBar\HealthBarIndicatorManager.cs" />
     <Compile Include="Assets\HealthUI.cs" />
     <Compile Include="Assets\Scripts\Enemy Handling\EnemyInteraction.cs" />
     <Compile Include="Assets\HighlightManager.cs" />
     <Compile Include="Assets\Ability6.cs" />
     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
+    <Compile Include="Assets\Scripts\CombatSystem.cs" />
     <Compile Include="Assets\Scripts\SpawnAfterDelay.cs" />
     <Compile Include="Assets\CameraManager.cs" />
-    <Compile Include="Assets\PlayerID.cs" />
+    <Compile Include="Assets\Scripts\Player Info\GenericCharacterTemplate.cs" />
     <Compile Include="Assets\Scripts\Input Handling\AbilityBasic.cs" />
     <Compile Include="Assets\Polytope Studio\Lowpoly_Characters\Sources\Scripts\PT_Create_Prefab.cs" />
     <Compile Include="Assets\AutoAttackScript.cs" />
@@ -95,8 +98,6 @@
     <Compile Include="Assets\Scripts\Abilities\Samurai\SamuraiAbility4.cs" />
     <Compile Include="Assets\RespawnHandler.cs" />
     <Compile Include="Assets\Prefabs\HealthBar\FadingHealthBar.cs" />
-    <Compile Include="Assets\Stats.cs" />
-    <Compile Include="Assets\CombatSystem.cs" />
     <Compile Include="Assets\Prefabs\HealthBar\HealthBar.cs" />
     <Compile Include="Assets\Ability4.cs" />
     <Compile Include="Assets\Scripts\Crowd Control\SlowHitbox.cs" />

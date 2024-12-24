@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [CreateAssetMenu]
-public class GenericCharacterTemplate : ScriptableObject
+public class GenericCharacterStatsAndActions : ScriptableObject
 {
     public string playerName;
 

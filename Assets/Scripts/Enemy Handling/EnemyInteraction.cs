@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(PlayerMove))]
-[RequireComponent(typeof(AutoAttackScript))]
 //script should be such that removing it prevents enemy targeting, like lobby inbetween matches of 2v2 arena mode
 public class EnemyInteraction : CombatSystem
 {

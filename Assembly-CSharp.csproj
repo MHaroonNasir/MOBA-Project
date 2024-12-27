@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Stats.cs" />
     <Compile Include="Assets\Prefabs\HealthBar\HealthBarIndicatorManager.cs" />
     <Compile Include="Assets\HealthUI.cs" />
+    <Compile Include="Assets\Scripts\Player Info\CharacterInfo.cs" />
     <Compile Include="Assets\Scripts\Enemy Handling\EnemyInteraction.cs" />
     <Compile Include="Assets\HighlightManager.cs" />
     <Compile Include="Assets\Ability6.cs" />

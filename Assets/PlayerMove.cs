@@ -8,7 +8,7 @@ using UnityEngine.Events;
 using System;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class PlayerMove : CombatSystem
+public class PlayerMove : CharacterTemplate
 {
     public Transform goal;
     public Camera camera;
@@ -112,7 +112,8 @@ public class PlayerMove : CombatSystem
 
         Rotation(position);
 
-        stats.ID.resetEnemyTargeting?.Invoke();
+        //stats.ID.resetEnemyTargeting?.Invoke();
+        samuraiCharacterInfo.genericStatsAndActions.resetEnemyTargeting?.Invoke();
 
         /*if (targetEnemy != null) //this function only called when user makes non-aggressive moves and does not target an enemy, hence the any enemy currently targeted and highlighted should be removed
         {
@@ -152,8 +153,9 @@ public class PlayerMove : CombatSystem
     }
 
     public void UpdateMovementSpeed() {
-        agent.speed = stats.ID.appliedMovementSpeed;
-        Debug.Log("updated mvoement speed: " + stats.ID.appliedMovementSpeed);
+        //agent.speed = stats.ID.appliedMovementSpeed;
+        agent.speed = samuraiCharacterInfo.genericStatsAndActions.appliedMovementSpeed;
+        //Debug.Log("updated mvoement speed: " + stats.ID.appliedMovementSpeed);
     }
 
     /*public void AttackAnimation(bool attackState)
@@ -180,13 +182,17 @@ public class PlayerMove : CombatSystem
     }
 
     private void OnEnable() {
-        stats.ID.isSlowed += UpdateMovementSpeed;
-        stats.ID.ccEnded += UpdateMovementSpeed;
+        //stats.ID.isSlowed += UpdateMovementSpeed;
+        //stats.ID.ccEnded += UpdateMovementSpeed;
+        samuraiCharacterInfo.genericStatsAndActions.isSlowed += UpdateMovementSpeed;
+        samuraiCharacterInfo.genericStatsAndActions.ccEnded += UpdateMovementSpeed;
     }
 
     private void OnDisable() {
-        stats.ID.isSlowed -= UpdateMovementSpeed;
-        stats.ID.ccEnded -= UpdateMovementSpeed;
+        //stats.ID.isSlowed -= UpdateMovementSpeed;
+        //stats.ID.ccEnded -= UpdateMovementSpeed;
+        samuraiCharacterInfo.genericStatsAndActions.isSlowed -= UpdateMovementSpeed;
+        samuraiCharacterInfo.genericStatsAndActions.ccEnded -= UpdateMovementSpeed;
     }
 }
 

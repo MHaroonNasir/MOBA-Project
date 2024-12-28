@@ -397,9 +397,9 @@
 "Assets/Scripts/Crowd Control/SlowHitbox.cs"
 "Assets/Scripts/Enemy Handling/EnemyInteraction.cs"
 "Assets/Scripts/Input Handling/AbilityBasic.cs"
-"Assets/Scripts/Player Info/CharacterInfo.cs"
 "Assets/Scripts/Player Info/GenericCharacterStatsAndActions.cs"
 "Assets/Scripts/Player Info/PlayerID.cs"
+"Assets/Scripts/Player Info/SamuraiCharacterInfo.cs"
 "Assets/Scripts/SpawnAfterDelay.cs"
 "Assets/Scripts/Stats.cs"
 -langversion:9.0

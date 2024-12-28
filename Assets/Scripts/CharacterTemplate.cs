@@ -4,14 +4,14 @@ using UnityEngine;
 
 public abstract class CharacterTemplate : MonoBehaviour
 {
-    protected GenericCharacterStatsAndActions genericStatsAndActions;
+    protected SamuraiCharacterInfo samuraiCharacterInfo;
     protected PlayerMove playerMove;
-    protected EnemyInteraction enemyInteraction;
+    //protected EnemyInteraction enemyInteraction;
 
     protected void Awake() {
-        genericStatsAndActions = transform.root.GetComponent<GenericCharacterStatsAndActions>();
+        samuraiCharacterInfo = transform.root.GetComponent<SamuraiCharacterInfo>();
         playerMove = transform.root.GetComponent<PlayerMove>();
-        enemyInteraction = transform.root.gameObject.GetComponent<EnemyInteraction>();
+        //enemyInteraction = transform.root.gameObject.GetComponent<EnemyInteraction>();
     }
     
 }

@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Abilities\Samurai\SamuraiPassive.cs" />
+    <Compile Include="Assets\Scripts\Player Info\SamuraiCharacterTemplate.cs" />
     <Compile Include="Assets\Scripts\Abilities\Samurai\SamuraiAbility1.cs" />
     <Compile Include="Assets\Scripts\Abilities\Samurai\SamuraiAbility2.cs" />
     <Compile Include="Assets\Scripts\Abilities\Samurai\SamuraiAbility3.cs" />
@@ -85,7 +86,6 @@
     <Compile Include="Assets\HighlightManager.cs" />
     <Compile Include="Assets\Ability6.cs" />
     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
-    <Compile Include="Assets\Scripts\CharacterTemplate.cs" />
     <Compile Include="Assets\Scripts\CombatSystem.cs" />
     <Compile Include="Assets\Scripts\SpawnAfterDelay.cs" />
     <Compile Include="Assets\CameraManager.cs" />

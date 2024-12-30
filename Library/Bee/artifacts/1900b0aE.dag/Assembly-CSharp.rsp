@@ -391,6 +391,8 @@
 "Assets/Scripts/Abilities/Samurai/SamuraiAbility4.cs"
 "Assets/Scripts/Abilities/Samurai/SamuraiAftershockSpawn.cs"
 "Assets/Scripts/Abilities/Samurai/SamuraiPassive.cs"
+"Assets/Scripts/CharacterInfo.cs"
+"Assets/Scripts/CharacterTemplate.cs"
 "Assets/Scripts/CombatSystem.cs"
 "Assets/Scripts/Crowd Control/CCSlow.cs"
 "Assets/Scripts/Crowd Control/SlowHitbox.cs"
@@ -398,10 +400,9 @@
 "Assets/Scripts/Input Handling/AbilityBasic.cs"
 "Assets/Scripts/Player Info/GenericCharacterStatsAndActions.cs"
 "Assets/Scripts/Player Info/PlayerID.cs"
-"Assets/Scripts/Player Info/SamuraiCharacterInfo.cs"
-"Assets/Scripts/Player Info/SamuraiCharacterTemplate.cs"
 "Assets/Scripts/SpawnAfterDelay.cs"
 "Assets/Scripts/Stats.cs"
+"Assets/Scripts/UpdateStats.cs"
 -langversion:9.0
 /deterministic
 /optimize+

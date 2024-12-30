@@ -113,7 +113,7 @@ public class PlayerMove : CharacterTemplate
         Rotation(position);
 
         //stats.ID.resetEnemyTargeting?.Invoke();
-        samuraiCharacterInfo.genericStatsAndActions.resetEnemyTargeting?.Invoke();
+        characterInfo.genericStatsAndActions.resetEnemyTargeting?.Invoke();
 
         /*if (targetEnemy != null) //this function only called when user makes non-aggressive moves and does not target an enemy, hence the any enemy currently targeted and highlighted should be removed
         {
@@ -154,7 +154,7 @@ public class PlayerMove : CharacterTemplate
 
     public void UpdateMovementSpeed() {
         //agent.speed = stats.ID.appliedMovementSpeed;
-        agent.speed = samuraiCharacterInfo.genericStatsAndActions.appliedMovementSpeed;
+        agent.speed = characterInfo.genericStatsAndActions.appliedMovementSpeed;
         //Debug.Log("updated mvoement speed: " + stats.ID.appliedMovementSpeed);
     }
 
@@ -184,15 +184,15 @@ public class PlayerMove : CharacterTemplate
     private void OnEnable() {
         //stats.ID.isSlowed += UpdateMovementSpeed;
         //stats.ID.ccEnded += UpdateMovementSpeed;
-        samuraiCharacterInfo.genericStatsAndActions.isSlowed += UpdateMovementSpeed;
-        samuraiCharacterInfo.genericStatsAndActions.ccEnded += UpdateMovementSpeed;
+        characterInfo.genericStatsAndActions.isSlowed += UpdateMovementSpeed;
+        characterInfo.genericStatsAndActions.ccEnded += UpdateMovementSpeed;
     }
 
     private void OnDisable() {
         //stats.ID.isSlowed -= UpdateMovementSpeed;
         //stats.ID.ccEnded -= UpdateMovementSpeed;
-        samuraiCharacterInfo.genericStatsAndActions.isSlowed -= UpdateMovementSpeed;
-        samuraiCharacterInfo.genericStatsAndActions.ccEnded -= UpdateMovementSpeed;
+        characterInfo.genericStatsAndActions.isSlowed -= UpdateMovementSpeed;
+        characterInfo.genericStatsAndActions.ccEnded -= UpdateMovementSpeed;
     }
 }
 

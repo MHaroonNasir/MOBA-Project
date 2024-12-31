@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SamuraiPassive : CombatSystem
+public class SamuraiPassive : CharacterTemplate
 {
-    public float passiveSpeedIncrease = 1f;
+    public bool isNotInCombat = true;
+    public float passiveMovementSpeedIncrease = 1f;
 
     private void Start() {
-        stats.ID.baseMovementSpeed += passiveSpeedIncrease;
+        characterInfo.genericStatsAndActions.baseMovementSpeed += passiveMovementSpeedIncrease;
+        characterInfo.genericStatsAndActions?.updateMovementSpeed.Invoke();
     }
 }

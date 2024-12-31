@@ -37,6 +37,7 @@ public class PlayerID : ScriptableObject
     //attack speed and range
     public float baseAttackSpeed = 1f;
     public float appliedAttackSpeed = 1f;
+    public Action updateAttackSpeed;
     public float baseAttackRange = 3f;
     public float appliedAttackRange = 3f;
 
@@ -46,6 +47,7 @@ public class PlayerID : ScriptableObject
     //movement speed
     public float baseMovementSpeed = 3.5f;
     public float appliedMovementSpeed = 3.5f;
+    public Action updateMovementSpeed;
 
     //public Action testAction;
     public PlayerEvents events; //struct //allocated on stack, not heap (research this)

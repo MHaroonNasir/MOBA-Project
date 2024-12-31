@@ -152,7 +152,7 @@ public class PlayerMove : CharacterTemplate
         anim.SetFloat("Speed", speed, motionSmoothTime, Time.deltaTime);
     }
 
-    public void UpdateMovementSpeed() {
+    public void UpdateAgentSpeed() {
         //agent.speed = stats.ID.appliedMovementSpeed;
         agent.speed = characterInfo.genericStatsAndActions.appliedMovementSpeed;
         //Debug.Log("updated mvoement speed: " + stats.ID.appliedMovementSpeed);
@@ -184,15 +184,15 @@ public class PlayerMove : CharacterTemplate
     private void OnEnable() {
         //stats.ID.isSlowed += UpdateMovementSpeed;
         //stats.ID.ccEnded += UpdateMovementSpeed;
-        characterInfo.genericStatsAndActions.isSlowed += UpdateMovementSpeed;
-        characterInfo.genericStatsAndActions.ccEnded += UpdateMovementSpeed;
+        characterInfo.genericStatsAndActions.updateMovementSpeed += UpdateAgentSpeed;
+        characterInfo.genericStatsAndActions.updateMovementSpeed += UpdateAgentSpeed;
     }
 
     private void OnDisable() {
         //stats.ID.isSlowed -= UpdateMovementSpeed;
         //stats.ID.ccEnded -= UpdateMovementSpeed;
-        characterInfo.genericStatsAndActions.isSlowed -= UpdateMovementSpeed;
-        characterInfo.genericStatsAndActions.ccEnded -= UpdateMovementSpeed;
+        characterInfo.genericStatsAndActions.updateMovementSpeed -= UpdateAgentSpeed;
+        characterInfo.genericStatsAndActions.updateMovementSpeed -= UpdateAgentSpeed;
     }
 }
 

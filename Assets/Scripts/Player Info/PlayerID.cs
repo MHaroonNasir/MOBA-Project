@@ -8,6 +8,8 @@ using UnityEngine.AI;
 public class PlayerID : ScriptableObject
 {
     public string playerName = "samurai";
+    public bool isAlive = true;
+    public Action hasDied;
 
     //health and sheilds
     public float baseHealth = 100f;

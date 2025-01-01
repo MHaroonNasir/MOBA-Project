@@ -381,7 +381,7 @@
 "Assets/PlayerMove.cs"
 "Assets/Polytope Studio/Lowpoly_Characters/Sources/Scripts/PT_Create_Prefab.cs"
 "Assets/Prefabs/HealthBar/FadingHealthBar.cs"
-"Assets/Prefabs/HealthBar/HealthBar.cs"
+"Assets/Prefabs/HealthBar/HealthBar - Outdated.cs"
 "Assets/Prefabs/HealthBar/HealthBarIndicatorManager.cs"
 "Assets/QuickOutline/Scripts/Outline.cs"
 "Assets/RespawnHandler.cs"
@@ -397,12 +397,12 @@
 "Assets/Scripts/Crowd Control/CCSlow.cs"
 "Assets/Scripts/Crowd Control/SlowHitbox.cs"
 "Assets/Scripts/Enemy Handling/EnemyInteraction.cs"
+"Assets/Scripts/HealthManager.cs"
 "Assets/Scripts/Input Handling/AbilityBasic.cs"
 "Assets/Scripts/Player Info/GenericCharacterStatsAndActions.cs"
 "Assets/Scripts/Player Info/PlayerID.cs"
 "Assets/Scripts/SpawnAfterDelay.cs"
 "Assets/Scripts/Stats.cs"
-"Assets/Scripts/UpdateStats.cs"
 -langversion:9.0
 /deterministic
 /optimize+

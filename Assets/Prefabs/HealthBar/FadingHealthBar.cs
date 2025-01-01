@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FadingHealthBar : MonoBehaviour
+public class FadingHealthBar : CharacterTemplate
 {
     public float currentHealth, maxHealth;
     public Slider currentHealthBarSlider;
@@ -17,7 +17,7 @@ public class FadingHealthBar : MonoBehaviour
     void Start()
     {
         SetHealthBarSliderValues();
-        healthBarIndicatorManager.IncrementHealthBar(maxHealth);
+        healthBarIndicatorManager.IncrementHealthBar(characterInfo.genericStatsAndActions.baseHealth);
     }
 
     /*private void Update() {
@@ -32,31 +32,51 @@ public class FadingHealthBar : MonoBehaviour
     }*/
 
     public void SetHealthBarSliderValues() {
-        currentHealthBarSlider.maxValue = maxHealth;
-        currentHealthBarSlider.value = currentHealth;
-        fadingHealthBarSlider.maxValue = maxHealth;
-        fadingHealthBarSlider.value = currentHealth;
+        currentHealthBarSlider.maxValue = characterInfo.genericStatsAndActions.baseHealth;
+        currentHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth / 2;
+        fadingHealthBarSlider.maxValue = characterInfo.genericStatsAndActions.baseHealth;
+        fadingHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth / 2;
     }
 
-    public void UpdateCurrentHealth(float currentHealth) {
-        this.currentHealth = Mathf.Min(currentHealth, this.maxHealth); //choose lowest value, ensures currentHealth does not exceed maxHealth
+    public void UpdateHealthBar() {
+        if (currentHealthBarSlider.maxValue != characterInfo.genericStatsAndActions.baseHealth) {
+            UpdateMaxHealth();
+        }
+
+        if (currentHealthBarSlider.value < characterInfo.genericStatsAndActions.appliedHealth) {
+            IncreaseHealth();
+        }
+        else if (currentHealthBarSlider.value > characterInfo.genericStatsAndActions.appliedHealth) {
+            StartCoroutine(DecreaseHealth());
+        }
     }
 
-    public void UpdateMaxHealth(float maxHealth) {
-        this.maxHealth = Mathf.Min(maxHealth, 3000f);
+    public void UpdateMaxHealth() {
+        currentHealthBarSlider.maxValue = characterInfo.genericStatsAndActions.baseHealth;
+        fadingHealthBarSlider.maxValue = characterInfo.genericStatsAndActions.baseHealth;
+        healthBarIndicatorManager.IncrementHealthBar(characterInfo.genericStatsAndActions.baseHealth);
     }
 
-    private void IncreaseHealth(float value) {
-        currentHealthBarSlider.value += value;
-        fadingHealthBarSlider.value += value;
+    private void IncreaseHealth() {
+        currentHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth;
+        fadingHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth;
     }
 
-    private IEnumerator DecreaseHealth(float value) {
-        currentHealthBarSlider.value -= value;
+    private IEnumerator DecreaseHealth() {
+        currentHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth;
+        float healthLossDifference = currentHealthBarSlider.value - characterInfo.genericStatsAndActions.appliedHealth;
 
         for (int i = 0; i < 100; i++) {
-            fadingHealthBarSlider.value -= value / 100f;
+            fadingHealthBarSlider.value -= healthLossDifference / 100f;
             yield return new WaitForSeconds(0.003f);
         }
+    }
+
+    private void OnEnable() {
+        characterInfo.genericStatsAndActions.updateHealth += UpdateHealthBar;
+    }
+
+    private void OnDisable() {
+        characterInfo.genericStatsAndActions.updateHealth -= UpdateHealthBar;
     }
 }

@@ -8,12 +8,16 @@ using UnityEngine.AI;
 public class GenericCharacterStatsAndActions : ScriptableObject
 {
     public string playerName;
+    public bool isAlive = true;
+    public Action hasDied;
 
     //health and sheilds
     public float baseHealth = 100f;
     public float appliedHealth = 100f;
+    public Action updateHealth;
     public float baseHealthRegen = 1.667f;
     public float appliedHealthRegen = 1.667f;
+    public Action updateHealthRegen;
     public float shieldAmount = 0f;
 
     //mana

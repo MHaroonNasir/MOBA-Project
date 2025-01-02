@@ -33,9 +33,9 @@ public class FadingHealthBar : CharacterTemplate
 
     public void SetHealthBarSliderValues() {
         currentHealthBarSlider.maxValue = characterInfo.genericStatsAndActions.baseHealth;
-        currentHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth / 2;
+        currentHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth;
         fadingHealthBarSlider.maxValue = characterInfo.genericStatsAndActions.baseHealth;
-        fadingHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth / 2;
+        fadingHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth;
     }
 
     public void UpdateHealthBar() {

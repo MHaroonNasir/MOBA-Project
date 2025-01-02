@@ -24,6 +24,7 @@ public class HealthManager : CharacterTemplate
 
             characterInfo.genericStatsAndActions.appliedHealth = Math.Min(currentHealthRegenerated, maxHealth);
             isCurrentlyAlive = characterInfo.genericStatsAndActions.isAlive;
+            characterInfo.genericStatsAndActions?.updateHealth.Invoke();
             yield return new WaitForSeconds(1f);
         }
     }

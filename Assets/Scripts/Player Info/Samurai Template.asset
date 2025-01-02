@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Samurai Template
   m_EditorClassIdentifier: 
   playerName: Samurai
-  baseHealth: 100
-  appliedHealth: 100
+  isAlive: 1
+  baseHealth: 125
+  appliedHealth: 106.67799
   baseHealthRegen: 1.667
   appliedHealthRegen: 1.667
   shieldAmount: 0

@@ -16,7 +16,7 @@ public class Stats : MonoBehaviour
 
     private void Start() {
         TryGetComponent<NavMeshAgent>(out NavMeshAgent navMeshAgent);
-        navMeshAgent.speed = ID.baseMovementSpeed;
+        navMeshAgent.speed = ID.movementSpeedBase;
         TryGetComponent<Animator>(out Animator animator);
         animator.SetFloat("Attack Speed", ID.appliedAttackSpeed);
     }

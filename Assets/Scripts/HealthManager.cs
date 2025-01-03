@@ -12,6 +12,15 @@ public class HealthManager : CharacterTemplate
         StartCoroutine(NaturalHealthRegen());
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.O)) {
+            ReceiveDamage(20);
+        }
+        if (Input.GetKeyDown(KeyCode.P)) {
+            IncreaseHealth(20);
+        }
+    }
+
     IEnumerator NaturalHealthRegen() {
         bool isCurrentlyAlive = characterInfo.genericStatsAndActions.isAlive;
         float regenAmount, currentHealthRegenerated;
@@ -39,11 +48,14 @@ public class HealthManager : CharacterTemplate
         if (characterInfo.genericStatsAndActions.appliedHealth <= 0f) {
             characterInfo.genericStatsAndActions?.hasDied.Invoke();
         }
-
+        characterInfo.genericStatsAndActions?.updateHealth.Invoke();
     }
 
-    public void IncreaseHealth() {
-
+    public void IncreaseHealth(float health) {
+        float currentHealthWithIncrease = characterInfo.genericStatsAndActions.appliedHealth + health;
+        maxHealth = characterInfo.genericStatsAndActions.baseHealth;
+        characterInfo.genericStatsAndActions.appliedHealth = Mathf.Min(currentHealthWithIncrease, maxHealth);
+        characterInfo.genericStatsAndActions?.updateHealth.Invoke();
     }
 
     public void IncreaseMaxHealth() {

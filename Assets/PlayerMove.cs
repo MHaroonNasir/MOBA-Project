@@ -32,15 +32,15 @@ public class PlayerMove : CharacterTemplate
 
     private void Awake() {
         base.Awake();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Start() 
     {
-        agent = GetComponent<NavMeshAgent>();
         //highlightManager = GetComponent<HighlightManager>();
         //agent.destination = goal.position;
         mouseRightClick.Enable();
-        //agent.speed = stats.ID.appliedMovementSpeed;
+        //agent.speed = stats.ID.movementSpeedApplied;
     }
 
     void Update()
@@ -153,9 +153,11 @@ public class PlayerMove : CharacterTemplate
     }
 
     public void UpdateAgentSpeed() {
-        //agent.speed = stats.ID.appliedMovementSpeed;
-        agent.speed = characterInfo.genericStatsAndActions.appliedMovementSpeed;
-        //Debug.Log("updated mvoement speed: " + stats.ID.appliedMovementSpeed);
+        //agent.speed = stats.ID.movementSpeedApplied;
+        characterInfo.genericStatsAndActions.movementSpeedApplied = (characterInfo.genericStatsAndActions.movementSpeedBase + characterInfo.genericStatsAndActions.movementSpeedFlatModification) 
+            * characterInfo.genericStatsAndActions.movementSpeedPercentModification;
+        agent.speed = characterInfo.genericStatsAndActions.movementSpeedApplied;
+        //Debug.Log("updated mvoement speed: " + stats.ID.movementSpeedApplied);
     }
 
     /*public void AttackAnimation(bool attackState)
@@ -185,13 +187,11 @@ public class PlayerMove : CharacterTemplate
         //stats.ID.isSlowed += UpdateMovementSpeed;
         //stats.ID.ccEnded += UpdateMovementSpeed;
         characterInfo.genericStatsAndActions.updateMovementSpeed += UpdateAgentSpeed;
-        characterInfo.genericStatsAndActions.updateMovementSpeed += UpdateAgentSpeed;
     }
 
     private void OnDisable() {
         //stats.ID.isSlowed -= UpdateMovementSpeed;
         //stats.ID.ccEnded -= UpdateMovementSpeed;
-        characterInfo.genericStatsAndActions.updateMovementSpeed -= UpdateAgentSpeed;
         characterInfo.genericStatsAndActions.updateMovementSpeed -= UpdateAgentSpeed;
     }
 }

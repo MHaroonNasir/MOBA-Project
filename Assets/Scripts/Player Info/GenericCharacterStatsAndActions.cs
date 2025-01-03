@@ -50,8 +50,10 @@ public class GenericCharacterStatsAndActions : ScriptableObject
     //public int critStrikeChance;
 
     //movement speed
-    public float baseMovementSpeed = 3.5f;
-    public float appliedMovementSpeed = 3.5f;
+    public float movementSpeedBase = 3.5f;
+    public float movementSpeedFlatModification = 0f;
+    public float movementSpeedPercentModification = 0f;
+    public float movementSpeedApplied = 3.5f;
     public Action updateMovementSpeed;
 
     //public Action testAction;

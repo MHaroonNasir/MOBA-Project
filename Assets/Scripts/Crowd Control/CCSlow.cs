@@ -16,10 +16,10 @@ public class CCSlow : CombatSystem
         float timePassed = 0f;
 
         if (slowType == 'f') {
-            stats.ID.appliedMovementSpeed = stats.ID.baseMovementSpeed - intensity;
+            stats.ID.movementSpeedApplied = stats.ID.movementSpeedBase - intensity;
         }
         if (slowType == '%') {
-            stats.ID.appliedMovementSpeed = stats.ID.baseMovementSpeed * (1 - intensity);
+            stats.ID.movementSpeedApplied = stats.ID.movementSpeedBase * (1 - intensity);
         }
         stats.ID.isSlowed?.Invoke();
 
@@ -27,17 +27,17 @@ public class CCSlow : CombatSystem
                 timePassed += Time.deltaTime;
                 yield return null; //return after each frame
             }
-        stats.ID.appliedMovementSpeed = stats.ID.baseMovementSpeed;
+        stats.ID.movementSpeedApplied = stats.ID.movementSpeedBase;
         stats.ID.isSlowed?.Invoke();
     }
 
     void ApplyCCSlow(char slowType, float intensity) {
         if (slowType == 'f') {
-            stats.ID.appliedMovementSpeed = stats.ID.baseMovementSpeed - intensity;
+            stats.ID.movementSpeedApplied = stats.ID.movementSpeedBase - intensity;
         }
 
         if (slowType == '%') {
-            stats.ID.appliedMovementSpeed = stats.ID.baseMovementSpeed * (1 - intensity);
+            stats.ID.movementSpeedApplied = stats.ID.movementSpeedBase * (1 - intensity);
         }
         stats.ID.isSlowed?.Invoke();
     }

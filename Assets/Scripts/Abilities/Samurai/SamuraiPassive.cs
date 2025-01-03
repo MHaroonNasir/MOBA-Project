@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class SamuraiPassive : CharacterTemplate
 {
-    public float currentHealthBeforeUpdate, currentHealthAfterUpdate, baseMovementSpeed, appliedMovementSpeed;
+    public float currentHealthBeforeUpdate, currentHealthAfterUpdate, movementSpeedBase, movementSpeedApplied;
 
-    public bool isNotInCombat = true;
+    public bool inCombat = false;
     public float passiveMovementSpeedIncrease = 1f;
     public float passiveMovementSpeedDecayDuration = 2.5f;
     public float passiveRechargeDuration = 12f;
@@ -18,15 +18,19 @@ public class SamuraiPassive : CharacterTemplate
     }
 
     public void ReapplyPassive() {
-        characterInfo.genericStatsAndActions.baseMovementSpeed += passiveMovementSpeedIncrease;
-        characterInfo.genericStatsAndActions.appliedMovementSpeed += passiveMovementSpeedIncrease;
+        Debug.Log("reapply passive");
+        characterInfo.genericStatsAndActions.movementSpeedFlatModification += passiveMovementSpeedIncrease;
+        inCombat = false;
         characterInfo.genericStatsAndActions?.updateMovementSpeed.Invoke();
     }
 
     public void CheckPlayerHasTakenDamage() {
+        Debug.Log("check damage");
         currentHealthAfterUpdate = characterInfo.genericStatsAndActions.appliedHealth;
         if (currentHealthAfterUpdate < currentHealthBeforeUpdate) {
-            StartCoroutine(PassiveMovementSpeedDecay());
+            if (!inCombat) {
+                StartCoroutine(PassiveMovementSpeedDecay());
+            }
             StopCoroutine(PassiveRecharge());
             StartCoroutine(PassiveRecharge());
         }
@@ -34,20 +38,25 @@ public class SamuraiPassive : CharacterTemplate
     }
 
     IEnumerator PassiveMovementSpeedDecay() {
+        Debug.Log("passive decay");
         float timePassed = 0f;
+        inCombat = true;
+        characterInfo.genericStatsAndActions.movementSpeedFlatModification -= passiveMovementSpeedIncrease;
+
+        movementSpeedBase = characterInfo.genericStatsAndActions.movementSpeedBase + passiveMovementSpeedIncrease;
+        movementSpeedApplied = movementSpeedBase - passiveMovementSpeedIncrease;
 
         while (timePassed < passiveMovementSpeedDecayDuration) {
-            baseMovementSpeed = characterInfo.genericStatsAndActions.baseMovementSpeed;
-            appliedMovementSpeed = characterInfo.genericStatsAndActions.appliedMovementSpeed;
-
-            characterInfo.genericStatsAndActions.baseMovementSpeed = Mathf.Lerp(baseMovementSpeed, baseMovementSpeed-passiveMovementSpeedIncrease, passiveMovementSpeedDecayDuration);
-            characterInfo.genericStatsAndActions.appliedMovementSpeed = Mathf.Lerp(appliedMovementSpeed, appliedMovementSpeed-passiveMovementSpeedIncrease, passiveMovementSpeedDecayDuration);
+            characterInfo.genericStatsAndActions.movementSpeedBase = Mathf.Lerp(movementSpeedBase, movementSpeedApplied, timePassed);
+            characterInfo.genericStatsAndActions.movementSpeedApplied = Mathf.Lerp(movementSpeedApplied, movementSpeedApplied, timePassed);
+            characterInfo.genericStatsAndActions?.updateMovementSpeed.Invoke();
             timePassed += Time.deltaTime;
             yield return null;
         }
     }
 
     IEnumerator PassiveRecharge() {
+        Debug.Log("passive recharge");
         float timePassed = 0f;
 
         while (timePassed < passiveRechargeDuration) {
@@ -58,10 +67,10 @@ public class SamuraiPassive : CharacterTemplate
     }
 
     private void OnEnable() {
-        characterInfo.genericStatsAndActions.updateMovementSpeed += CheckPlayerHasTakenDamage;
+        characterInfo.genericStatsAndActions.updateHealth += CheckPlayerHasTakenDamage;
     }
 
     private void OnDisable() {
-        characterInfo.genericStatsAndActions.updateMovementSpeed -= CheckPlayerHasTakenDamage;
+        characterInfo.genericStatsAndActions.updateHealth -= CheckPlayerHasTakenDamage;
     }
 }

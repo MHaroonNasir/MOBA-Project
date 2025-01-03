@@ -15,7 +15,7 @@ MonoBehaviour:
   playerName: Samurai
   isAlive: 1
   baseHealth: 125
-  appliedHealth: 106.67799
+  appliedHealth: 11.667999
   baseHealthRegen: 1.667
   appliedHealthRegen: 1.667
   shieldAmount: 0
@@ -35,5 +35,7 @@ MonoBehaviour:
   appliedAttackSpeed: 1
   baseAttackRange: 3
   appliedAttackRange: 3
-  baseMovementSpeed: 3.5
-  appliedMovementSpeed: 3.5
+  movementSpeedBase: 3.5
+  movementSpeedFlatModification: 0
+  movementSpeedPercentModification: 0
+  movementSpeedApplied: 3.5

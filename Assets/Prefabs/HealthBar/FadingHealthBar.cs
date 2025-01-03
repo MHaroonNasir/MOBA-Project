@@ -63,8 +63,8 @@ public class FadingHealthBar : CharacterTemplate
     }
 
     private IEnumerator DecreaseHealth() {
-        currentHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth;
         float healthLossDifference = currentHealthBarSlider.value - characterInfo.genericStatsAndActions.appliedHealth;
+        currentHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth;
 
         for (int i = 0; i < 100; i++) {
             fadingHealthBarSlider.value -= healthLossDifference / 100f;

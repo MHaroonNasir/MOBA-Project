@@ -47,8 +47,8 @@ public class PlayerID : ScriptableObject
     //public int critStrikeChance;
 
     //movement speed
-    public float baseMovementSpeed = 3.5f;
-    public float appliedMovementSpeed = 3.5f;
+    public float movementSpeedBase = 3.5f;
+    public float movementSpeedApplied = 3.5f;
     public Action updateMovementSpeed;
 
     //public Action testAction;

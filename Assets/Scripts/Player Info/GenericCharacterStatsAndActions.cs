@@ -52,7 +52,7 @@ public class GenericCharacterStatsAndActions : ScriptableObject
     //movement speed
     public float movementSpeedBase = 3.5f;
     public float movementSpeedFlatModification = 0f;
-    public float movementSpeedPercentModification = 0f;
+    public float movementSpeedPercentModification = 1.0f;
     public float movementSpeedApplied = 3.5f;
     public Action updateMovementSpeed;
 

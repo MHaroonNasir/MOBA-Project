@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class SamuraiPassive : CharacterTemplate
 {
-    public float currentHealthBeforeUpdate, currentHealthAfterUpdate, movementSpeedBase, movementSpeedApplied;
+    public double currentHealthBeforeUpdate, currentHealthAfterUpdate, movementSpeedBase, movementSpeedApplied;
 
     public bool inCombat = false;
-    public float passiveMovementSpeedIncrease = 1.0f;
-    public float passiveMovementSpeedDecayDuration = 2.5f;
-    public float passiveRechargeDuration = 12f;
+    public double passiveMovementSpeedIncrease = 1.0d;
+    public double passiveMovementSpeedDecayDuration = 2.5d;
+    public double passiveRechargeDuration = 12d;
 
     private void Start() {
         currentHealthBeforeUpdate = characterInfo.genericStatsAndActions.appliedHealth;
@@ -39,19 +39,19 @@ public class SamuraiPassive : CharacterTemplate
 
     IEnumerator PassiveMovementSpeedDecay() {
         Debug.Log("passive decay");
-        float timePassed = 0f;
+        double timePassed = 0d;
         inCombat = true;
 
-        float tickRate = 10f;
-        float speedDecreasePerTick = passiveMovementSpeedIncrease / tickRate;
-        float timeDurationPerTick = passiveMovementSpeedDecayDuration / tickRate;
+        double tickRate = 10d;
+        double speedDecreasePerTick = passiveMovementSpeedIncrease / tickRate;
+        double timeDurationPerTick = passiveMovementSpeedDecayDuration / tickRate;
 
         Debug.Log(speedDecreasePerTick + "   " + timeDurationPerTick);
         while (timePassed < passiveMovementSpeedDecayDuration) {
             characterInfo.genericStatsAndActions.movementSpeedFlatModification -= speedDecreasePerTick;
             characterInfo.genericStatsAndActions?.updateMovementSpeed.Invoke();
             timePassed += timeDurationPerTick;
-            yield return new WaitForSeconds(timeDurationPerTick);
+            yield return new WaitForSeconds((float)timeDurationPerTick);
         }
     }
 

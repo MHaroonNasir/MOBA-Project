@@ -156,7 +156,7 @@ public class PlayerMove : CharacterTemplate
         //agent.speed = stats.ID.movementSpeedApplied;
         characterInfo.genericStatsAndActions.movementSpeedApplied = (characterInfo.genericStatsAndActions.movementSpeedBase + characterInfo.genericStatsAndActions.movementSpeedFlatModification) 
             * characterInfo.genericStatsAndActions.movementSpeedPercentModification;
-        agent.speed = characterInfo.genericStatsAndActions.movementSpeedApplied;
+        agent.speed = (float)characterInfo.genericStatsAndActions.movementSpeedApplied;
         //Debug.Log("updated mvoement speed: " + stats.ID.movementSpeedApplied);
     }
 

@@ -18,12 +18,11 @@ public class HealthBarIndicatorManager : MonoBehaviour
         indicatorManager = this.gameObject.GetComponent<RectTransform>();
     }
 
-    public void IncrementHealthBar(float maxHealth) {
+    public void IncrementHealthBar(double maxHealth) {
         currentIndicatorChildren = this.transform.childCount;
-        float widthPerIncrement = 1000 / maxHealth * 100;
+        float widthPerIncrement = (float)(1000 / maxHealth * 100);
         float numOfIndicators = Mathf.Ceil(1000 / widthPerIncrement);
         float widthIncreaseForLastIncrement = widthPerIncrement - (1000 / widthPerIncrement % 1 * widthPerIncrement);
-        //float maxHealthIncrements = Mathf.Floor(maxHealth / 100f);
         
         while (currentIndicatorChildren < numOfIndicators) {
             GameObject childObject = Instantiate(indicatorPrefab, this.gameObject.transform);
@@ -33,11 +32,6 @@ public class HealthBarIndicatorManager : MonoBehaviour
             indicators.Add(childObject);
             indicatorImages.Add(childObject.GetComponent<Image>());
         }
-
-        //Debug.Log(currentIndicatorChildren);
-        //Debug.Log(widthPerIncrement);
-        //Debug.Log(numOfIndicators);
-        //Debug.Log(widthIncreaseForLastIncrement);
 
         UpdateIndicators();
         UpdateIndicatorCanvas(widthIncreaseForLastIncrement);

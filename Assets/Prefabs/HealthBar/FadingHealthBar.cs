@@ -16,8 +16,10 @@ public class FadingHealthBar : CharacterTemplate
 
     void Start()
     {
-        SetHealthBarSliderValues();
-        healthBarIndicatorManager.IncrementHealthBar(characterInfo.genericStatsAndActions.baseHealth);
+        //SetHealthBarSliderValues();
+        //healthBarIndicatorManager.IncrementHealthBar(characterInfo.genericStatsAndActions.baseHealth);
+        UpdateMaxHealth();
+        IncreaseHealth();
     }
 
     /*private void Update() {
@@ -31,12 +33,12 @@ public class FadingHealthBar : CharacterTemplate
         }
     }*/
 
-    public void SetHealthBarSliderValues() {
-        currentHealthBarSlider.maxValue = characterInfo.genericStatsAndActions.baseHealth;
-        currentHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth;
-        fadingHealthBarSlider.maxValue = characterInfo.genericStatsAndActions.baseHealth;
-        fadingHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth;
-    }
+    /*public void SetHealthBarSliderValues() {
+        currentHealthBarSlider.maxValue = (float)characterInfo.genericStatsAndActions.baseHealth;
+        currentHealthBarSlider.value = (float)characterInfo.genericStatsAndActions.appliedHealth;
+        fadingHealthBarSlider.maxValue = (float)characterInfo.genericStatsAndActions.baseHealth;
+        fadingHealthBarSlider.value = (float)characterInfo.genericStatsAndActions.appliedHealth;
+    }*/
 
     public void UpdateHealthBar() {
         if (currentHealthBarSlider.maxValue != characterInfo.genericStatsAndActions.baseHealth) {
@@ -52,22 +54,22 @@ public class FadingHealthBar : CharacterTemplate
     }
 
     public void UpdateMaxHealth() {
-        currentHealthBarSlider.maxValue = characterInfo.genericStatsAndActions.baseHealth;
-        fadingHealthBarSlider.maxValue = characterInfo.genericStatsAndActions.baseHealth;
+        currentHealthBarSlider.maxValue = (float)characterInfo.genericStatsAndActions.baseHealth;
+        fadingHealthBarSlider.maxValue = (float)characterInfo.genericStatsAndActions.baseHealth;
         healthBarIndicatorManager.IncrementHealthBar(characterInfo.genericStatsAndActions.baseHealth);
     }
 
     private void IncreaseHealth() {
-        currentHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth;
-        fadingHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth;
+        currentHealthBarSlider.value = (float)characterInfo.genericStatsAndActions.appliedHealth;
+        fadingHealthBarSlider.value = (float)characterInfo.genericStatsAndActions.appliedHealth;
     }
 
     private IEnumerator DecreaseHealth() {
-        float healthLossDifference = currentHealthBarSlider.value - characterInfo.genericStatsAndActions.appliedHealth;
-        currentHealthBarSlider.value = characterInfo.genericStatsAndActions.appliedHealth;
+        double healthLossDifference = currentHealthBarSlider.value - characterInfo.genericStatsAndActions.appliedHealth;
+        currentHealthBarSlider.value = (float)characterInfo.genericStatsAndActions.appliedHealth;
 
         for (int i = 0; i < 100; i++) {
-            fadingHealthBarSlider.value -= healthLossDifference / 100f;
+            fadingHealthBarSlider.value -= (float)(healthLossDifference / 100d);
             yield return new WaitForSeconds(0.003f);
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HealthManager : CharacterTemplate
 {
-    public float maxHealth, currentHealth, maxPhysicalDef, currentPhysicalDef, maxMagicDef, currentMagicDef;
+    public double maxHealth, currentHealth, maxPhysicalDef, currentPhysicalDef, maxMagicDef, currentMagicDef;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class HealthManager : CharacterTemplate
 
     IEnumerator NaturalHealthRegen() {
         bool isCurrentlyAlive = characterInfo.genericStatsAndActions.isAlive;
-        float regenAmount, currentHealthRegenerated;
+        double regenAmount, currentHealthRegenerated;
 
         while (isCurrentlyAlive) {
             currentHealth = characterInfo.genericStatsAndActions.appliedHealth;
@@ -38,23 +38,23 @@ public class HealthManager : CharacterTemplate
         }
     }
 
-    public void ReceiveDamage(float damage) {
+    public void ReceiveDamage(double damage) {
         currentPhysicalDef = characterInfo.genericStatsAndActions.appliedPhysicalDefense;
         currentMagicDef = characterInfo.genericStatsAndActions.appliedMagicDefense;
         
         //todo: use DEF stats to reduce damage
 
         characterInfo.genericStatsAndActions.appliedHealth -= damage;
-        if (characterInfo.genericStatsAndActions.appliedHealth <= 0f) {
+        if (characterInfo.genericStatsAndActions.appliedHealth <= 0d) {
             characterInfo.genericStatsAndActions?.hasDied.Invoke();
         }
         characterInfo.genericStatsAndActions?.updateHealth.Invoke();
     }
 
     public void IncreaseHealth(float health) {
-        float currentHealthWithIncrease = characterInfo.genericStatsAndActions.appliedHealth + health;
+        double currentHealthWithIncrease = characterInfo.genericStatsAndActions.appliedHealth + health;
         maxHealth = characterInfo.genericStatsAndActions.baseHealth;
-        characterInfo.genericStatsAndActions.appliedHealth = Mathf.Min(currentHealthWithIncrease, maxHealth);
+        characterInfo.genericStatsAndActions.appliedHealth = Mathf.Min((float)currentHealthWithIncrease, (float)maxHealth);
         characterInfo.genericStatsAndActions?.updateHealth.Invoke();
     }
 

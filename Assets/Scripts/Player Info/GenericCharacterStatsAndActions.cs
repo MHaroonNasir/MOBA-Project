@@ -12,48 +12,48 @@ public class GenericCharacterStatsAndActions : ScriptableObject
     public Action hasDied;
 
     //health and sheilds
-    public float baseHealth = 100f;
-    public float appliedHealth = 100f;
+    public double baseHealth = 100d;
+    public double appliedHealth = 100d;
     public Action updateHealth;
-    public float baseHealthRegen = 1.667f;
-    public float appliedHealthRegen = 1.667f;
+    public double baseHealthRegen = 1.667d;
+    public double appliedHealthRegen = 1.667d;
     public Action updateHealthRegen;
-    public float shieldAmount = 0f;
+    public double shieldAmount = 0d;
 
     //mana
-    public float baseMana = 100f;
-    public float appliedMana = 100f;
-    public float baseManaRegen = 5f;
-    public float appliedManaRegen = 5f;
+    public double baseMana = 100d;
+    public double appliedMana = 100d;
+    public double baseManaRegen = 5d;
+    public double appliedManaRegen = 5d;
 
     //ressistances
-    public float basePhysicalDefense = 0f;
-    public float appliedPhysicalDefense = 0f;
-    public float baseMagicDefense = 0f;
-    public float appliedMagicDefense = 0f;
+    public double basePhysicalDefense = 0d;
+    public double appliedPhysicalDefense = 0d;
+    public double baseMagicDefense = 0d;
+    public double appliedMagicDefense = 0d;
 
     //damage
-    public float basePhysicalDamage = 10f;
-    public float appliedPhysicalDamage = 10f;
-    public float baseMagicDamage = 10f;
-    public float appliedMagicDamage = 10f;
+    public double basePhysicalDamage = 10d;
+    public double appliedPhysicalDamage = 10d;
+    public double baseMagicDamage = 10d;
+    public double appliedMagicDamage = 10d;
 
     //attack speed and range
-    public float baseAttackSpeed = 1f;
-    public float appliedAttackSpeed = 1f;
+    public double baseAttackSpeed = 1d;
+    public double appliedAttackSpeed = 1d;
     public Action updateAttackSpeed;
-    public float baseAttackRange = 3f;
-    public float appliedAttackRange = 3f;
+    public double baseAttackRange = 3d;
+    public double appliedAttackRange = 3d;
     public Action updateAttackRange;
 
     //critical strike
     //public int critStrikeChance;
 
     //movement speed
-    public float movementSpeedBase = 3.5f;
-    public float movementSpeedFlatModification = 0f;
-    public float movementSpeedPercentModification = 1.0f;
-    public float movementSpeedApplied = 3.5f;
+    public double movementSpeedBase = 3.5d;
+    public double movementSpeedFlatModification = 0d;
+    public double movementSpeedPercentModification = 1.0d;
+    public double movementSpeedApplied = 3.5d;
     public Action updateMovementSpeed;
 
     //public Action testAction;

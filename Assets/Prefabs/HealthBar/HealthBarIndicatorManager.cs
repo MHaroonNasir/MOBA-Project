@@ -18,6 +18,7 @@ public class HealthBarIndicatorManager : MonoBehaviour
         indicatorManager = this.gameObject.GetComponent<RectTransform>();
     }
 
+    //TODO: make a way to reduce maxhealth and indicators
     public void IncrementHealthBar(double maxHealth) {
         currentIndicatorChildren = this.transform.childCount;
         float widthPerIncrement = (float)(1000 / maxHealth * 100);

@@ -31,7 +31,7 @@ public class HealthManager : CharacterTemplate
             regenAmount = characterInfo.genericStatsAndActions.appliedHealthRegen;
             currentHealthRegenerated = currentHealth + regenAmount;
 
-            characterInfo.genericStatsAndActions.appliedHealth = Math.Min(currentHealthRegenerated, maxHealth);
+            characterInfo.genericStatsAndActions.appliedHealth = Math.Min(Math.Round(currentHealthRegenerated, 2), maxHealth);
             isCurrentlyAlive = characterInfo.genericStatsAndActions.isAlive;
             characterInfo.genericStatsAndActions?.updateHealth.Invoke();
             yield return new WaitForSeconds(1f);

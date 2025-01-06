@@ -90,7 +90,7 @@ public class AbilityBasic : CombatSystem
                 //ROTATION
                 //Quaternion rotationToLookAt = Quaternion.LookRotation(hit.point - transform.position);
                 //transform.rotation = Quaternion.Lerp(transform.rotation, rotationToLookAt, 1f);
-                playerMove.Rotation(hit.point);
+                playerMove.RotateCharacter(hit.point);
 
                 //StartCoroutine(Ability4Cast());
                 stats.ID.ability1?.Invoke();

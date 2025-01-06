@@ -65,7 +65,7 @@ public class EnemyInteraction : CombatSystem
             AttackAnimation(true);
         }*/
 
-        this.playerMove.Rotation(targetEnemy.transform.position);
+        this.playerMove.RotateCharacter(targetEnemy.transform.position);
         highlightManager.SelectedHighlight();
     }
 

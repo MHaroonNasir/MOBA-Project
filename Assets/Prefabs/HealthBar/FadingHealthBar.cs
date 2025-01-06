@@ -6,18 +6,12 @@ using UnityEngine.UI;
 
 public class FadingHealthBar : CharacterTemplate
 {
-    public float currentHealth, maxHealth;
     public Slider currentHealthBarSlider;
     public Slider fadingHealthBarSlider;
     public HealthBarIndicatorManager healthBarIndicatorManager;
 
-    public List<GameObject> indicators; //these 2 lists should be same size
-    public List<Image> indicatorImages;
-
     void Start()
     {
-        //SetHealthBarSliderValues();
-        //healthBarIndicatorManager.IncrementHealthBar(characterInfo.genericStatsAndActions.baseHealth);
         UpdateMaxHealth();
         IncreaseHealth();
     }
@@ -33,13 +27,6 @@ public class FadingHealthBar : CharacterTemplate
         }
     }*/
 
-    /*public void SetHealthBarSliderValues() {
-        currentHealthBarSlider.maxValue = (float)characterInfo.genericStatsAndActions.baseHealth;
-        currentHealthBarSlider.value = (float)characterInfo.genericStatsAndActions.appliedHealth;
-        fadingHealthBarSlider.maxValue = (float)characterInfo.genericStatsAndActions.baseHealth;
-        fadingHealthBarSlider.value = (float)characterInfo.genericStatsAndActions.appliedHealth;
-    }*/
-
     public void UpdateHealthBar() {
         if (currentHealthBarSlider.maxValue != characterInfo.genericStatsAndActions.baseHealth) {
             UpdateMaxHealth();
@@ -53,6 +40,7 @@ public class FadingHealthBar : CharacterTemplate
         }
     }
 
+    //TODO: make a way to reduce maxhealth and indicators
     public void UpdateMaxHealth() {
         currentHealthBarSlider.maxValue = (float)characterInfo.genericStatsAndActions.baseHealth;
         fadingHealthBarSlider.maxValue = (float)characterInfo.genericStatsAndActions.baseHealth;

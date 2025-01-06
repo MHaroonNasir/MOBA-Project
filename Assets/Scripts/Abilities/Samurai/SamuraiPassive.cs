@@ -18,14 +18,15 @@ public class SamuraiPassive : CharacterTemplate
     }
 
     public void ReapplyPassive() {
-        Debug.Log("reapply passive");
+        //Debug.Log("reapply passive");
         characterInfo.genericStatsAndActions.movementSpeedFlatModification += passiveMovementSpeedIncrease;
+        characterInfo.genericStatsAndActions.movementSpeedFlatModification = Math.Round(characterInfo.genericStatsAndActions.movementSpeedFlatModification, 2);
         inCombat = false;
         characterInfo.genericStatsAndActions?.updateMovementSpeed.Invoke();
     }
 
     public void CheckPlayerHasTakenDamage() {
-        Debug.Log("check damage");
+        //Debug.Log("check damage");
         currentHealthAfterUpdate = characterInfo.genericStatsAndActions.appliedHealth;
         if (currentHealthAfterUpdate < currentHealthBeforeUpdate) {
             if (!inCombat) {
@@ -38,7 +39,7 @@ public class SamuraiPassive : CharacterTemplate
     }
 
     IEnumerator PassiveMovementSpeedDecay() {
-        Debug.Log("passive decay");
+        //Debug.Log("passive decay");
         double timePassed = 0d;
         inCombat = true;
 
@@ -46,9 +47,9 @@ public class SamuraiPassive : CharacterTemplate
         double speedDecreasePerTick = passiveMovementSpeedIncrease / tickRate;
         double timeDurationPerTick = passiveMovementSpeedDecayDuration / tickRate;
 
-        Debug.Log(speedDecreasePerTick + "   " + timeDurationPerTick);
         while (timePassed < passiveMovementSpeedDecayDuration) {
             characterInfo.genericStatsAndActions.movementSpeedFlatModification -= speedDecreasePerTick;
+            characterInfo.genericStatsAndActions.movementSpeedFlatModification = Math.Round(characterInfo.genericStatsAndActions.movementSpeedFlatModification, 2);
             characterInfo.genericStatsAndActions?.updateMovementSpeed.Invoke();
             timePassed += timeDurationPerTick;
             yield return new WaitForSeconds((float)timeDurationPerTick);
@@ -56,7 +57,7 @@ public class SamuraiPassive : CharacterTemplate
     }
 
     IEnumerator PassiveRecharge() {
-        Debug.Log("passive recharge");
+        //Debug.Log("passive recharge");
         float timePassed = 0f;
 
         while (timePassed < passiveRechargeDuration) {
